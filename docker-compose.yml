@@ -7,6 +7,8 @@ services:
      - 4321:5432
     env_file:
      - .env
+    volumes:
+      - pg_students:/var/lib/postgresql/data
 
   node_app_students_ci_cd:
     container_name: node_app_students_ci_cd
@@ -17,3 +19,5 @@ services:
      - .env
     depends_on:
      - db_students_ci_cd
+volumes:
+  pg_students:
