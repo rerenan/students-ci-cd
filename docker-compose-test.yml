@@ -1,0 +1,23 @@
+services:
+  db_students_ci_cd:
+    image: postgres
+    container_name: db_students_ci_cd
+    restart: always
+    ports:
+     - 4321:5432
+    env_file:
+     - .env.test
+    volumes:
+      - pg_students:/var/lib/postgresql/data
+
+  node_app_students_ci_cd:
+    container_name: node_app_students_ci_cd
+    build: .
+    ports:
+     - 5000:5000
+    env_file:
+     - .env.test
+    depends_on:
+     - db_students_ci_cd
+volumes:
+  pg_students:
