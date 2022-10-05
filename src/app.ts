@@ -24,6 +24,7 @@ app.get("/students/random", async (req: Request, res: Response) => {
   if (students.length > 0) {
     const randomStudent = students[Math.floor(Math.random() * students.length)];
     res.send(randomStudent);
+    //opa
   } else {
     res.send({});
   }
